@@ -1,0 +1,4 @@
+/.idea/
+/src/main/java/*.class
+/src/main/java/testCLI.txt
+/articles.txt
