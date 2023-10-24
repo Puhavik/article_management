@@ -28,9 +28,6 @@ abstract public class Article implements Serializable {
         if (publisher.isEmpty()) {
             throw new IllegalArgumentException("Error: Publisher is Empty");
         }
-        if (basePrice < 0) {
-            throw new IllegalArgumentException("Error: Invalid Base Price");
-        }
 
         this.id = id;
         this.title = title;
