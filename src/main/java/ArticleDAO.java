@@ -1,13 +1,12 @@
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface ArticleDAO {
 
-    public List<Article> getArticleList() throws FileNotFoundException;
+    List<Article> getArticleList();
 
-    public Article getArticle(int id) throws FileNotFoundException;
+    Article getArticle(int id);
 
-    public void saveArticle(Article article);
+    void saveArticle(Article article);
 
-    public void deleteArticle(int id) throws FileNotFoundException;
+    void deleteArticle(int id);
 }

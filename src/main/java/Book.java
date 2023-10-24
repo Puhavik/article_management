@@ -26,11 +26,11 @@ public class Book extends Article implements Serializable {
     @Override
     public String toString() {
         return "Type:       " + "Book" + "\n" +
-                "ID:         " + getId() + "\n" +
+                "Id:         " + getId() + "\n" +
                 "Title:      " + getTitle() + "\n" +
                 "Year:       " + getReleaseYear() + "\n" +
                 "Publisher:  " + getPublisher() + "\n" +
-                "Base Price: " + getBasePrice() + "\n" +
+                "Base price: " + getBasePrice() + "\n" +
                 "Price:      " + getPrice() + "\n" +
                 "Pages:      " + numberOfPages + "\n";
     }

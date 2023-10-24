@@ -1,8 +1,6 @@
-
 import java.io.Serializable;
 import java.time.Year;
 import java.text.DecimalFormat;
-import java.util.List;
 
 abstract public class Article implements Serializable {
     private Integer id;
@@ -14,8 +12,9 @@ abstract public class Article implements Serializable {
     public Article(Integer id, String title, int releaseYear, String publisher, double basePrice) {
         Year year = Year.now();
         int currentYear = year.getValue();
+
         if (releaseYear > currentYear || releaseYear < 1) {
-            throw new IllegalArgumentException("Error: Invalid Release Year");
+            throw new IllegalArgumentException("Error: Invalid release year.");
         }
         if (basePrice < 0) {
             throw new IllegalArgumentException("Error: Invalid Price");
@@ -94,6 +93,4 @@ abstract public class Article implements Serializable {
     }
 
     public abstract double getDiscount();
-
-    //TODO check IDs
 }

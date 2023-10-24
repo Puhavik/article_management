@@ -53,7 +53,7 @@ public class SerializedArticleDAO implements ArticleDAO {
     @Override
     public void saveArticle(Article article) {
         if (getArticle(article.getId()) != null) {
-            throw new IllegalArgumentException("Not allowed!");
+            throw new IllegalArgumentException("Error: Article already exists. (id=" + article.getId() + ")");
         }
         List<Article> articlesNew = getArticleList();
         articlesNew.add(article);
@@ -70,19 +70,37 @@ public class SerializedArticleDAO implements ArticleDAO {
 
     }
 
-    @Override
-    public void deleteArticle(int id) throws FileNotFoundException {
-        List<Article> articles = getArticleList();
 
-        articles.removeIf(article -> article.getId() == id);
+    @Override
+    public void deleteArticle(int id) {
         try {
-            ObjectOutputStream writer = new ObjectOutputStream(new
-                    FileOutputStream(fileName));
+            List<Article> articles = getArticleList();
+            boolean found = false;
+
+            for (Article article : articles) {
+                if (article.getId() == id) {
+                    articles.remove(article);
+                    found = true;
+                    break;
+                } else if (article.getId() == null){
+                    throw new IllegalArgumentException("Illegal Parameter.");
+                }
+            }
+
+            if (!found) {
+                System.err.println("Article not found.");
+                return;
+            }
+
+            ObjectOutputStream writer = new ObjectOutputStream(new FileOutputStream(fileName));
             writer.writeObject(articles);
             writer.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Error during serialization. " + e.getMessage());
+            System.err.println("Error during serialization: " + e.getMessage());
             System.exit(1);
         }
     }
 }
+

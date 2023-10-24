@@ -10,7 +10,7 @@ public class DVD extends Article implements Serializable {
             throw new IllegalArgumentException("Error: Invalid Duration");
         }
         if (!(ageRate == 0 || ageRate == 6 || ageRate == 12 || ageRate == 16 || ageRate == 18)) {
-            throw new IllegalArgumentException("Error: Invalid Age Rating");
+            throw new IllegalArgumentException("Error: Invalid age rating.");
         }
         this.duration = duration;
         this.ageRate = ageRate;
@@ -30,14 +30,14 @@ public class DVD extends Article implements Serializable {
     @Override
     public String toString() {
         return "Type:       " + "DVD" + "\n" +
-                "ID:         " + getId() + "\n" +
+                "Id:         " + getId() + "\n" +
                 "Title:      " + getTitle() + "\n" +
                 "Year:       " + getReleaseYear() + "\n" +
                 "Publisher:  " + getPublisher() + "\n" +
-                "Base Price: " + getBasePrice() + "\n" +
+                "Base price: " + getBasePrice() + "\n" +
                 "Price:      " + getPrice() + "\n" +
                 "Length:     " + duration + "\n" +
-                "Age rating: " + ageRate;
+                "Age rating: " + ageRate + "\n";
     }
 
 }
