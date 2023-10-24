@@ -28,7 +28,7 @@ public class ArticleCLI {
                     Integer id = Integer.valueOf(args[3]);
                     String title = args[4];
                     String publisher = args[5];
-                    int releaseYear = 0;
+                    int releaseYear;
                     if (!args[6].matches("\\d+")) {
                         throw new IllegalArgumentException("Error: Invalid parameter.");
                     }
