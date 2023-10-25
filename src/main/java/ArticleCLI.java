@@ -15,10 +15,6 @@ public class ArticleCLI {
             ArticleDAO articleDAO = new SerializedArticleDAO(fileName);
             ArticleManagement articleManagement = new ArticleManagement(articleDAO);
 
-            if (!file.exists()) {
-                file.createNewFile();
-                System.out.println("File " + fileName + " created");
-            }
             switch (command) {
                 case "add":
                     String articleType = args[2];
